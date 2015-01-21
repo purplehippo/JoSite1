@@ -1,0 +1,100 @@
+﻿*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+body
+{
+    background-color: #333;
+    color: #F0F0F0;
+    font-family: Calibri;
+    font-size: 11pt;
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+}
+
+#outerContainer
+{
+    max-width: 1205px;
+}
+#innerContainer
+{
+    width: 770px;
+    position: relative;
+    text-align: justify;
+}
+
+#header
+{
+    text-align: left;
+}
+#header IMG
+{
+    z-index: 100;
+    float: left;
+}
+#imageHeader
+{
+    /*background: url( '../images/blobs.png' ) #333 no-repeat 0% 0%;
+    width: 770px;*/
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    width: 100%;
+    background: url('../images/blobsWide.png') #306 no-repeat;
+    height: 80px;
+    z-index: 0;
+}
+
+#content 
+{
+    width: 100%;
+    border: solid 1px #000;
+    margin-top: 20px;
+}
+
+h1
+{
+    font-weight: bold;
+    font-size: 3em;
+}
+p
+{
+    margin-top: 12px;
+}
+
+/*
+#menu UL
+{
+    padding-top: 25px;
+}
+#menu UL LI
+{
+    padding: 20px 8px 0px 8px;
+    border-left: solid 1px #F0F0F0;
+}
+*/
+
+#menuContent { float: right; }
+#menu {position: relative; float: right; height: 35px; }
+#menu, #menu ul { padding:0; margin:0; list-style:none; }
+#menu table { border-collapse:collapse; width:0; height:0; border:0; font-size:1em; position:absolute; left:0; top:0; }
+#menu div { position:absolute; left:-9999px; }
+#menu div ul { background: url('../images/menuBg.png'); }
+#menu li.parent { float:left; padding: 0px 8px 0px 8px; border-left: solid 1px #F0F0F0; }
+#menu li.parent a {display:block; color:#F0F0F0; height:35px; line-height:33px; text-align:center; text-decoration:none; background:transparent; }
+
+#menu li.parent a:hover  {border:0; color:#dacba4;}
+#menu li.parent:hover > a  {color:#dacba4;}
+
+#menu :hover div {left:0; height:auto;}
+#menu :hover div ul { width: 230px; }
+#menu :hover ul li dl {padding:0px; width:300px; margin:0px auto; padding: 5px 0px; text-align:left;}
+#menu :hover ul li dl dt {padding:0px; margin:0px; color:#FFF; height:25px; line-height:25px;}
+#menu :hover ul li dl dd {padding:0px; margin:0px; color:#FFF; text-align:left; width:100%;}
+#menu :hover ul li dl dd a {text-decoration:none; color:#c7cab5; width:100%; font-weight:normal; text-align:left; height:25px; line-height:25px; }
+#menu :hover ul li dl dd a:hover {color:#faebc4;}
+
+
+

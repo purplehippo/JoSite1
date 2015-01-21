@@ -1,0 +1,813 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.0.12.0-build02810\build\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.props" Condition="Exists('..\packages\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.0.12.0-build02810\build\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2FA6DC3-8CE0-4106-9E6F-E758EE8F3698}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JoOriginal</RootNamespace>
+    <AssemblyName>JoOriginal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>575acf6d</NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/1abdc2d4-6759-4126-a66d-14469d486107/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/JoOriginal</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.0.12.0-build17386\lib\net40\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.PerfCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerformanceCollector.0.12.0-build17386\lib\net40\Microsoft.ApplicationInsights.Extensibility.PerfCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.RuntimeTelemetry.0.12.0-build17386\lib\net45\Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.0.12.0-build17386\lib\net45\Microsoft.ApplicationInsights.Extensibility.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Instrumentation.Extensions.Intercept">
+      <HintPath>..\packages\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.0.12.0-build02810\lib\net40\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.11-beta\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config" />
+    <Content Include="battleringers\battleLeaflet.pdf" />
+    <Content Include="Files\studentacademicsummary.pdf" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-bold-webfont.eot" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-bold-webfont.ttf" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-bold-webfont.woff" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-regular-webfont.eot" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-regular-webfont.ttf" />
+    <Content Include="HTML5\Creative\styles\fonts\quicksand-regular-webfont.woff" />
+    <Content Include="HTML5\Shiny\SolarSystem\SolarSystem.xlsx" />
+    <Content Include="NZ03\RingingTowers.doc" />
+    <Content Include="NZ03\RingInNZ.doc" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="preApril2012\Files\cvJoFaircloth_Mar11.pdf" />
+    <Content Include="preApril2012\Files\studentacademicsummary.pdf" />
+    <Content Include="preApril2012\jo\original\academicrecord.pdf" />
+    <Content Include="preApril2012\jo\original\files\academicrecord.pdf" />
+    <Content Include="preApril2012\jo\original\nz03\RingingTowers.doc" />
+    <Content Include="preApril2012\jo\original\nz03\RingInNZ.doc" />
+    <Content Include="preApril2012\NZ03\RingingTowers.doc" />
+    <Content Include="preApril2012\NZ03\RingInNZ.doc" />
+    <None Include="Properties\PublishProfiles\woozlesjo.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="android.htm" />
+    <Content Include="battleringers\Battle Bell Ringers - Outing 2002, Essex.htm" />
+    <Content Include="battleringers\battle.css" />
+    <Content Include="battleringers\church.htm" />
+    <Content Include="battleringers\events.htm" />
+    <Content Include="battleringers\history.htm" />
+    <Content Include="battleringers\images\battleMap.gif" />
+    <Content Include="battleringers\images\bellbg.gif" />
+    <Content Include="battleringers\images\bellBox_sm.jpg" />
+    <Content Include="battleringers\images\bells2_sm.jpg" />
+    <Content Include="battleringers\images\bellUpDown_sm.jpg" />
+    <Content Include="battleringers\images\blanknav.gif" />
+    <Content Include="battleringers\images\BRCross.gif" />
+    <Content Include="battleringers\images\button.gif" />
+    <Content Include="battleringers\images\churchInside.jpg" />
+    <Content Include="battleringers\images\churchSign_sm.jpg" />
+    <Content Include="battleringers\images\churchYardDusk.jpg" />
+    <Content Include="battleringers\images\eight.gif" />
+    <Content Include="battleringers\images\eventnav.gif" />
+    <Content Include="battleringers\images\five.gif" />
+    <Content Include="battleringers\images\four.gif" />
+    <Content Include="battleringers\images\hownav.gif" />
+    <Content Include="battleringers\images\meetnav.gif" />
+    <Content Include="battleringers\images\nine.gif" />
+    <Content Include="battleringers\images\nos\eight.gif" />
+    <Content Include="battleringers\images\nos\five.gif" />
+    <Content Include="battleringers\images\nos\four.gif" />
+    <Content Include="battleringers\images\nos\nine.gif" />
+    <Content Include="battleringers\images\nos\one.gif" />
+    <Content Include="battleringers\images\nos\seven.gif" />
+    <Content Include="battleringers\images\nos\six.gif" />
+    <Content Include="battleringers\images\nos\three.gif" />
+    <Content Include="battleringers\images\nos\two.gif" />
+    <Content Include="battleringers\images\one.gif" />
+    <Content Include="battleringers\images\pb1.jpg" />
+    <Content Include="battleringers\images\plainHunt.gif" />
+    <Content Include="battleringers\images\seven.gif" />
+    <Content Include="battleringers\images\six.gif" />
+    <Content Include="battleringers\images\three.gif" />
+    <Content Include="battleringers\images\two.gif" />
+    <Content Include="battleringers\index.htm" />
+    <Content Include="battleringers\js\swap.js" />
+    <Content Include="battleringers\meet.htm" />
+    <Content Include="battleringers\news.htm" />
+    <Content Include="battleringers\outing2002.htm" />
+    <Content Include="battleringers\quarters.htm" />
+    <Content Include="battleringers\sitemap.htm" />
+    <Content Include="battleringers\whatis.htm" />
+    <Content Include="colour.css" />
+    <Content Include="cv.htm" />
+    <Content Include="general.htm" />
+    <Content Include="home.htm" />
+    <Content Include="HTML5.htm" />
+    <Content Include="HTML5\2048\Game2048.html" />
+    <Content Include="HTML5\2048\js\GameDisplay.js" />
+    <Content Include="HTML5\2048\js\GamePlay.js" />
+    <Content Include="HTML5\2048\js\Grid.js" />
+    <Content Include="HTML5\2048\js\KeyboardInput.js" />
+    <Content Include="HTML5\2048\js\Tile.js" />
+    <Content Include="HTML5\2048\styles\main.css" />
+    <Content Include="HTML5\Chaos\Attractors.html" />
+    <Content Include="HTML5\Chaos\jquery-1.11.0.js" />
+    <Content Include="HTML5\Chaos\Lorenz.js" />
+    <Content Include="HTML5\Chaos\LSystems.html" />
+    <Content Include="HTML5\Chaos\LSystems.js" />
+    <Content Include="HTML5\Chaos\MandelBrot1.html" />
+    <Content Include="HTML5\Chaos\MandelbrotSet.js" />
+    <Content Include="HTML5\Chaos\Utils.js" />
+    <Content Include="HTML5\Creative\Experiments.html" />
+    <Content Include="HTML5\Creative\Experiments.js" />
+    <Content Include="HTML5\Creative\styles\main.css" />
+    <Content Include="HTML5\Particles\Particles.html" />
+    <Content Include="HTML5\Particles\Particles.js" />
+    <Content Include="HTML5\Particles\Utils.js" />
+    <Content Include="HTML5\Shiny\Bubbles1.htm" />
+    <Content Include="HTML5\Shiny\images\clockface.png" />
+    <Content Include="HTML5\Shiny\images\hourHand.png" />
+    <Content Include="HTML5\Shiny\images\minuteHand.png" />
+    <Content Include="HTML5\Shiny\images\secondHand.png" />
+    <Content Include="HTML5\Shiny\jquery-1.6.min.js" />
+    <Content Include="HTML5\Shiny\SolarSystem\asteroids.png" />
+    <Content Include="HTML5\Shiny\SolarSystem\SolarSystem.css" />
+    <Content Include="HTML5\Shiny\SolarSystem\SolarSystem.htm" />
+    <Content Include="HTML5\Shiny\TickTock.htm" />
+    <Content Include="Images\android.png" />
+    <Content Include="Images\boardwalkSthnAlps.png" />
+    <Content Include="Images\cathedral.png" />
+    <Content Include="Images\contentBg.png" />
+    <Content Include="Images\cv.png" />
+    <Content Include="Images\horsehead.png" />
+    <Content Include="Images\interests.png" />
+    <Content Include="Images\jofaircloth.png" />
+    <Content Include="Images\learn.png" />
+    <Content Include="Images\me.jpg" />
+    <Content Include="Images\menuBg.png" />
+    <Content Include="Images\menuHoverBg.png" />
+    <Content Include="Images\menuSelectedBg.png" />
+    <Content Include="Images\motion.jpg" />
+    <Content Include="Images\newzealand.png" />
+    <Content Include="Images\play.png" />
+    <Content Include="Images\quoteClose.png" />
+    <Content Include="Images\quoteOpen.png" />
+    <Content Include="Images\Ringsim_blue_line.png" />
+    <Content Include="Images\Ringsim_list.png" />
+    <Content Include="Images\Ringsim_search_results.png" />
+    <Content Include="Images\S15BR.jpg" />
+    <Content Include="Images\S15BRFull.jpg" />
+    <Content Include="Images\S15me.jpg" />
+    <Content Include="Images\S15meFull.gif" />
+    <Content Include="Images\S15now.jpg" />
+    <Content Include="Images\S15nowFull.jpg" />
+    <Content Include="Images\snow.png" />
+    <Content Include="Images\sunset.png" />
+    <Content Include="Images\UBoat.jpg" />
+    <Content Include="Images\UBoatBg.png" />
+    <Content Include="Images\UBoatFull.jpg" />
+    <Content Include="Images\udacity.png" />
+    <Content Include="Images\walk.jpg" />
+    <Content Include="Images\work.png" />
+    <Content Include="indexColour.htm" />
+    <Content Include="interests.htm" />
+    <Content Include="jofaircloth.png" />
+    <Content Include="NZ03\akaroa.htm" />
+    <Content Include="NZ03\caption.htm" />
+    <Content Include="NZ03\chchring.htm" />
+    <Content Include="NZ03\hanmer.htm" />
+    <Content Include="NZ03\Images\akaroaview1.jpg" />
+    <Content Include="NZ03\Images\akaroa\allanDaleBr.jpg" />
+    <Content Include="NZ03\Images\akaroa\allandaleTree.jpg" />
+    <Content Include="NZ03\Images\akaroa\carView.jpg" />
+    <Content Include="NZ03\Images\akaroa\joCar2.jpg" />
+    <Content Include="NZ03\Images\akaroa\lyttelton.jpg" />
+    <Content Include="NZ03\Images\akaroa\maoriVillage.jpg" />
+    <Content Include="NZ03\Images\akaroa\roadSign.jpg" />
+    <Content Include="NZ03\Images\akaroa\sun.jpg" />
+    <Content Include="NZ03\Images\akaroa\theEdge.jpg" />
+    <Content Include="NZ03\Images\aucklandview.jpg" />
+    <Content Include="NZ03\Images\birthday.jpg" />
+    <Content Include="NZ03\Images\bridgeOpera.jpg" />
+    <Content Include="NZ03\Images\bridgeUnder.jpg" />
+    <Content Include="NZ03\Images\bridgeView.jpg" />
+    <Content Include="NZ03\Images\bungyBridge.jpg" />
+    <Content Include="NZ03\Images\bushtrain.jpg" />
+    <Content Include="NZ03\Images\cathedral.jpg" />
+    <Content Include="NZ03\Images\chchw.jpg" />
+    <Content Include="NZ03\Images\chchwNight1.jpg" />
+    <Content Include="NZ03\Images\cityBridge.jpg" />
+    <Content Include="NZ03\Images\conicle.jpg" />
+    <Content Include="NZ03\Images\crossing.jpg" />
+    <Content Include="NZ03\Images\dinnerCont.jpg" />
+    <Content Include="NZ03\Images\dinnerGrin.jpg" />
+    <Content Include="NZ03\Images\dolphin.jpg" />
+    <Content Include="NZ03\Images\downView.jpg" />
+    <Content Include="NZ03\Images\fall.jpg" />
+    <Content Include="NZ03\Images\fox2.jpg" />
+    <Content Include="NZ03\Images\franz2.jpg" />
+    <Content Include="NZ03\Images\FriFirst.jpg" />
+    <Content Include="NZ03\Images\FriFourth.jpg" />
+    <Content Include="NZ03\Images\FriSecond.jpg" />
+    <Content Include="NZ03\Images\FriThird.jpg" />
+    <Content Include="NZ03\Images\geyser.jpg" />
+    <Content Include="NZ03\Images\golf.jpg" />
+    <Content Include="NZ03\Images\goodsheppard.jpg" />
+    <Content Include="NZ03\Images\grump.jpg" />
+    <Content Include="NZ03\Images\hay.jpg" />
+    <Content Include="NZ03\Images\ice.jpg" />
+    <Content Include="NZ03\Images\JoTasman.jpg" />
+    <Content Include="NZ03\Images\jv.jpg" />
+    <Content Include="NZ03\Images\kanga.jpg" />
+    <Content Include="NZ03\Images\kea.jpg" />
+    <Content Include="NZ03\Images\lakePalm.jpg" />
+    <Content Include="NZ03\Images\leopard.jpg" />
+    <Content Include="NZ03\Images\lionCubs.jpg" />
+    <Content Include="NZ03\Images\longTailMonkey.jpg" />
+    <Content Include="NZ03\Images\maitland.jpg" />
+    <Content Include="NZ03\Images\maori.jpg" />
+    <Content Include="NZ03\Images\matheson.jpg" />
+    <Content Include="NZ03\Images\meerCats.jpg" />
+    <Content Include="NZ03\Images\meMyself.jpg" />
+    <Content Include="NZ03\Images\mist.jpg" />
+    <Content Include="NZ03\Images\mtCook.jpg" />
+    <Content Include="NZ03\Images\mtdoom2.jpg" />
+    <Content Include="NZ03\Images\myquarter.jpg" />
+    <Content Include="NZ03\Images\other\bigAl.jpg" />
+    <Content Include="NZ03\Images\other\canopy.jpg" />
+    <Content Include="NZ03\Images\other\icecream.jpg" />
+    <Content Include="NZ03\Images\other\joSnow.jpg" />
+    <Content Include="NZ03\Images\other\limeWorks.jpg" />
+    <Content Include="NZ03\Images\other\sheep.jpg" />
+    <Content Include="NZ03\Images\other\shoes.jpg" />
+    <Content Include="NZ03\Images\other\snowMist.jpg" />
+    <Content Include="NZ03\Images\other\sumner.jpg" />
+    <Content Include="NZ03\Images\other\tree.jpg" />
+    <Content Include="NZ03\Images\pacific.jpg" />
+    <Content Include="NZ03\Images\papanui.jpg" />
+    <Content Include="NZ03\Images\plane.jpg" />
+    <Content Include="NZ03\Images\pukaki.jpg" />
+    <Content Include="NZ03\Images\pukakijv.jpg" />
+    <Content Include="NZ03\Images\rhino.jpg" />
+    <Content Include="NZ03\Images\satAfternoon.jpg" />
+    <Content Include="NZ03\Images\satEarlyLunch.jpg" />
+    <Content Include="NZ03\Images\seal.jpg" />
+    <Content Include="NZ03\Images\Singleton.jpg" />
+    <Content Include="NZ03\Images\snake.jpg" />
+    <Content Include="NZ03\Images\square.jpg" />
+    <Content Include="NZ03\Images\steam.jpg" />
+    <Content Include="NZ03\Images\stMarysRain.jpg" />
+    <Content Include="NZ03\Images\sunBBQ.jpg" />
+    <Content Include="NZ03\Images\sundayMorn.jpg" />
+    <Content Include="NZ03\Images\sunset1.jpg" />
+    <Content Include="NZ03\Images\tekapocross.jpg" />
+    <Content Include="NZ03\Images\terra.jpg" />
+    <Content Include="NZ03\Images\train.jpg" />
+    <Content Include="NZ03\Images\train428.jpg" />
+    <Content Include="NZ03\Images\trainCarBridge.jpg" />
+    <Content Include="NZ03\Images\trambridge.jpg" />
+    <Content Include="NZ03\Images\trimbleball.jpg" />
+    <Content Include="NZ03\Images\tuhoe.jpg" />
+    <Content Include="NZ03\Images\Weka\A428.jpg" />
+    <Content Include="NZ03\Images\Weka\bed.jpg" />
+    <Content Include="NZ03\Images\Weka\driveAlong.jpg" />
+    <Content Include="NZ03\Images\Weka\flyPast.jpg" />
+    <Content Include="NZ03\Images\Weka\frogRock.jpg" />
+    <Content Include="NZ03\Images\Weka\seaSunset.jpg" />
+    <Content Include="NZ03\Images\Weka\station.jpg" />
+    <Content Include="NZ03\Images\weltram.jpg" />
+    <Content Include="NZ03\Images\workDinner.jpg" />
+    <Content Include="NZ03\Images\yellowpenguin.jpg" />
+    <Content Include="NZ03\index %282%29.htm" />
+    <Content Include="NZ03\mtcook.htm" />
+    <Content Include="NZ03\nz_general.htm" />
+    <Content Include="NZ03\nz_index.htm" />
+    <Content Include="NZ03\nz_work.htm" />
+    <Content Include="NZ03\other.htm" />
+    <Content Include="NZ03\subMenu.js" />
+    <Content Include="NZ03\sydney.htm" />
+    <Content Include="NZ03\sydney_ch.htm" />
+    <Content Include="NZ03\travel.htm" />
+    <Content Include="NZ03\wekaPass.htm" />
+    <Content Include="NZ03\west.htm" />
+    <Content Include="NZ03\wildlife.htm" />
+    <Content Include="ou.htm" />
+    <Content Include="photos.htm" />
+    <Content Include="preApril2012\BrinksterExamples\DatabaseSelect.asp" />
+    <Content Include="preApril2012\cv.htm" />
+    <Content Include="preApril2012\general.htm" />
+    <Content Include="preApril2012\home.htm" />
+    <Content Include="preApril2012\Images\boardwalkSthnAlps.png" />
+    <Content Include="preApril2012\Images\cathedral.png" />
+    <Content Include="preApril2012\Images\contentBg.png" />
+    <Content Include="preApril2012\Images\cv.png" />
+    <Content Include="preApril2012\Images\horsehead.png" />
+    <Content Include="preApril2012\Images\interests.png" />
+    <Content Include="preApril2012\Images\jofaircloth.png" />
+    <Content Include="preApril2012\Images\learn.png" />
+    <Content Include="preApril2012\Images\me.jpg" />
+    <Content Include="preApril2012\Images\menuBg.png" />
+    <Content Include="preApril2012\Images\menuHoverBg.png" />
+    <Content Include="preApril2012\Images\menuSelectedBg.png" />
+    <Content Include="preApril2012\Images\motion.jpg" />
+    <Content Include="preApril2012\Images\newzealand.png" />
+    <Content Include="preApril2012\Images\play.png" />
+    <Content Include="preApril2012\Images\quoteClose.png" />
+    <Content Include="preApril2012\Images\quoteOpen.png" />
+    <Content Include="preApril2012\Images\S15BR.jpg" />
+    <Content Include="preApril2012\Images\S15BRFull.jpg" />
+    <Content Include="preApril2012\Images\S15me.jpg" />
+    <Content Include="preApril2012\Images\S15meFull.gif" />
+    <Content Include="preApril2012\Images\S15now.jpg" />
+    <Content Include="preApril2012\Images\S15nowFull.jpg" />
+    <Content Include="preApril2012\Images\snow.png" />
+    <Content Include="preApril2012\Images\sunset.png" />
+    <Content Include="preApril2012\Images\UBoat.jpg" />
+    <Content Include="preApril2012\Images\UBoatBg.png" />
+    <Content Include="preApril2012\Images\UBoatFull.jpg" />
+    <Content Include="preApril2012\Images\walk.jpg" />
+    <Content Include="preApril2012\Images\work.png" />
+    <Content Include="preApril2012\indexColour.htm" />
+    <Content Include="preApril2012\interests.htm" />
+    <Content Include="preApril2012\jofaircloth.png" />
+    <Content Include="preApril2012\jo\Kevin\committee.htm" />
+    <Content Include="preApril2012\jo\Kevin\cssWSNG.css" />
+    <Content Include="preApril2012\jo\Kevin\gallery.htm" />
+    <Content Include="preApril2012\jo\Kevin\images\bg.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\bgTOC.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\dd_bello.JPG" />
+    <Content Include="preApril2012\jo\Kevin\images\guess.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image001.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image003.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image005.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image007.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image009.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image011.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image013.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image015.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\image017.jpg" />
+    <Content Include="preApril2012\jo\Kevin\images\NGuageLogo.gif" />
+    <Content Include="preApril2012\jo\Kevin\index.htm" />
+    <Content Include="preApril2012\jo\Kevin\links.htm" />
+    <Content Include="preApril2012\jo\Kevin\toc.htm" />
+    <Content Include="preApril2012\jo\Kevin\welcome.htm" />
+    <Content Include="preApril2012\jo\original\aboutwork.htm" />
+    <Content Include="preApril2012\jo\original\cv.htm" />
+    <Content Include="preApril2012\jo\original\gate.jpg" />
+    <Content Include="preApril2012\jo\original\home.htm" />
+    <Content Include="preApril2012\jo\original\Images\corner_bl.gif" />
+    <Content Include="preApril2012\jo\original\Images\corner_br.gif" />
+    <Content Include="preApril2012\jo\original\Images\corner_tl.gif" />
+    <Content Include="preApril2012\jo\original\Images\corner_tr.gif" />
+    <Content Include="preApril2012\jo\original\Images\me.jpg" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3931.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3935.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3945.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3947.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3967.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3977.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\IMG_3986.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3931.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3932.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3934.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3936.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3937.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3943.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3945.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3946.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3947.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3948.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3950.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3951.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3952.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3954.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3957.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3958.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3959.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3960.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3961.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3962.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3963.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3964.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3965.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3967.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3977.JPG" />
+    <Content Include="preApril2012\jo\original\Images\paul\small\IMG_3986.JPG" />
+    <Content Include="preApril2012\jo\original\Images\pointer.gif" />
+    <Content Include="preApril2012\jo\original\Images\S15BR.jpg" />
+    <Content Include="preApril2012\jo\original\Images\S15me.gif" />
+    <Content Include="preApril2012\jo\original\Images\S15now.JPG" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\me.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\motion.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\moz.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\S15BR.JPG" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\S15me.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\S15now.JPG" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\tree.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\UBoat.jpg" />
+    <Content Include="preApril2012\jo\original\Images\thumbs\walk.jpg" />
+    <Content Include="preApril2012\jo\original\Images\UBoat.jpg" />
+    <Content Include="preApril2012\jo\original\interests.htm" />
+    <Content Include="preApril2012\jo\original\nz03\akaroa.htm" />
+    <Content Include="preApril2012\jo\original\nz03\caption.htm" />
+    <Content Include="preApril2012\jo\original\nz03\chchring.htm" />
+    <Content Include="preApril2012\jo\original\nz03\hanmer.htm" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroaview1.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\allanDaleBr.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\allandaleTree.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\carView.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\joCar2.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\lyttelton.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\maoriVillage.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\roadSign.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\sun.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\akaroa\theEdge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\allanDaleBr.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\allandaleTree.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\aucklandview.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\birthday.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\bridgeOpera.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\bridgeUnder.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\bridgeView.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\bungyBridge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\bushtrain.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\carView.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\cathedral.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\chchw.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\chchwNight1.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\cityBridge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\conicle.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\crossing.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\dinnerCont.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\dinnerGrin.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\dolphin.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\downView.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\fall.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\fox2.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\franz2.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\FriFirst.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\FriFourth.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\FriSecond.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\FriThird.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\geyser.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\golf.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\goodsheppard.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\grump.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\hay.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\ice.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\joCar2.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\JoTasman.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\jv.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\kanga.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\kea.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\lakePalm.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\leopard.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\lionCubs.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\longTailMonkey.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\lyttelton.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\maitland.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\maori.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\maoriVillage.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\matheson.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\meerCats.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\meMyself.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\mist.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\mtCook.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\mtdoom2.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\myquarter.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\bigAl.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\canopy.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\icecream.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\joSnow.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\limeWorks.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\sheep.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\shoes.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\snowMist.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\sumner.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\other\tree.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\pacific.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\papanui.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\plane.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\pukaki.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\pukakijv.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\rhino.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\roadSign.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\satAfternoon.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\satEarlyLunch.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\seal.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\Singleton.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\snake.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\square.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\steam.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\stMarysRain.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\sun.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\sunBBQ.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\sundayMorn.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\sunset1.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\tekapocross.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\terra.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\theEdge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\train.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\train428.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\trainCarBridge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\trambridge.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\trimbleball.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\tuhoe.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\A428.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\bed.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\driveAlong.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\flyPast.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\frogRock.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\seaSunset.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weka\station.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\weltram.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\workDinner.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\images\yellowpenguin.jpg" />
+    <Content Include="preApril2012\jo\original\nz03\index.htm" />
+    <Content Include="preApril2012\jo\original\nz03\mtcook.htm" />
+    <Content Include="preApril2012\jo\original\nz03\nz_general.htm" />
+    <Content Include="preApril2012\jo\original\nz03\other.htm" />
+    <Content Include="preApril2012\jo\original\nz03\sydney.htm" />
+    <Content Include="preApril2012\jo\original\nz03\sydney_ch.htm" />
+    <Content Include="preApril2012\jo\original\nz03\travel.htm" />
+    <Content Include="preApril2012\jo\original\nz03\wekaPass.htm" />
+    <Content Include="preApril2012\jo\original\nz03\west.htm" />
+    <Content Include="preApril2012\jo\original\nz03\wildlife.htm" />
+    <Content Include="preApril2012\jo\original\nz03\work.htm" />
+    <Content Include="preApril2012\jo\original\ou.htm" />
+    <Content Include="preApril2012\jo\original\oucourses.htm" />
+    <Content Include="preApril2012\jo\original\pointer.gif" />
+    <Content Include="preApril2012\jo\original\scripts\header.js" />
+    <Content Include="preApril2012\jo\original\scripts\menu.js" />
+    <Content Include="preApril2012\jo\original\styles\mine.css" />
+    <Content Include="preApril2012\jo\original\styles\plain.css" />
+    <Content Include="preApril2012\jo\original\styles\plain_orig.css" />
+    <Content Include="preApril2012\jo\paul\phhr161006.htm" />
+    <Content Include="preApril2012\jo\paul\scripts\header.js" />
+    <Content Include="preApril2012\jo\paul\scripts\menu.js" />
+    <Content Include="preApril2012\jo\puzzle\107-0754_IMG.JPG" />
+    <Content Include="preApril2012\jo\puzzle\grid.gif" />
+    <Content Include="preApril2012\jo\puzzle\IMG_3676.JPG" />
+    <Content Include="preApril2012\jo\puzzle\IMG_3774.JPG" />
+    <Content Include="preApril2012\jo\puzzle\IMG_3869.JPG" />
+    <Content Include="preApril2012\jo\puzzle\IMG_3882.JPG" />
+    <Content Include="preApril2012\jo\puzzle\puzzle.htm" />
+    <Content Include="preApril2012\Me\kev_amarillo.jpg" />
+    <Content Include="preApril2012\Me\peter_amarillo.jpg" />
+    <Content Include="preApril2012\Me\std.htm" />
+    <Content Include="preApril2012\NZ03\akaroa.htm" />
+    <Content Include="preApril2012\NZ03\caption.htm" />
+    <Content Include="preApril2012\NZ03\chchring.htm" />
+    <Content Include="preApril2012\NZ03\hanmer.htm" />
+    <Content Include="preApril2012\NZ03\Images\akaroaview1.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\allanDaleBr.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\allandaleTree.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\carView.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\joCar2.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\lyttelton.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\maoriVillage.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\roadSign.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\sun.jpg" />
+    <Content Include="preApril2012\NZ03\Images\akaroa\theEdge.jpg" />
+    <Content Include="preApril2012\NZ03\Images\aucklandview.jpg" />
+    <Content Include="preApril2012\NZ03\Images\birthday.jpg" />
+    <Content Include="preApril2012\NZ03\Images\bridgeOpera.jpg" />
+    <Content Include="preApril2012\NZ03\Images\bridgeUnder.jpg" />
+    <Content Include="preApril2012\NZ03\Images\bridgeView.jpg" />
+    <Content Include="preApril2012\NZ03\Images\bungyBridge.jpg" />
+    <Content Include="preApril2012\NZ03\Images\bushtrain.jpg" />
+    <Content Include="preApril2012\NZ03\Images\cathedral.jpg" />
+    <Content Include="preApril2012\NZ03\Images\chchw.jpg" />
+    <Content Include="preApril2012\NZ03\Images\chchwNight1.jpg" />
+    <Content Include="preApril2012\NZ03\Images\cityBridge.jpg" />
+    <Content Include="preApril2012\NZ03\Images\conicle.jpg" />
+    <Content Include="preApril2012\NZ03\Images\crossing.jpg" />
+    <Content Include="preApril2012\NZ03\Images\dinnerCont.jpg" />
+    <Content Include="preApril2012\NZ03\Images\dinnerGrin.jpg" />
+    <Content Include="preApril2012\NZ03\Images\dolphin.jpg" />
+    <Content Include="preApril2012\NZ03\Images\downView.jpg" />
+    <Content Include="preApril2012\NZ03\Images\fall.jpg" />
+    <Content Include="preApril2012\NZ03\Images\fox2.jpg" />
+    <Content Include="preApril2012\NZ03\Images\franz2.jpg" />
+    <Content Include="preApril2012\NZ03\Images\FriFirst.jpg" />
+    <Content Include="preApril2012\NZ03\Images\FriFourth.jpg" />
+    <Content Include="preApril2012\NZ03\Images\FriSecond.jpg" />
+    <Content Include="preApril2012\NZ03\Images\FriThird.jpg" />
+    <Content Include="preApril2012\NZ03\Images\geyser.jpg" />
+    <Content Include="preApril2012\NZ03\Images\golf.jpg" />
+    <Content Include="preApril2012\NZ03\Images\goodsheppard.jpg" />
+    <Content Include="preApril2012\NZ03\Images\grump.jpg" />
+    <Content Include="preApril2012\NZ03\Images\hay.jpg" />
+    <Content Include="preApril2012\NZ03\Images\ice.jpg" />
+    <Content Include="preApril2012\NZ03\Images\JoTasman.jpg" />
+    <Content Include="preApril2012\NZ03\Images\jv.jpg" />
+    <Content Include="preApril2012\NZ03\Images\kanga.jpg" />
+    <Content Include="preApril2012\NZ03\Images\kea.jpg" />
+    <Content Include="preApril2012\NZ03\Images\lakePalm.jpg" />
+    <Content Include="preApril2012\NZ03\Images\leopard.jpg" />
+    <Content Include="preApril2012\NZ03\Images\lionCubs.jpg" />
+    <Content Include="preApril2012\NZ03\Images\longTailMonkey.jpg" />
+    <Content Include="preApril2012\NZ03\Images\maitland.jpg" />
+    <Content Include="preApril2012\NZ03\Images\maori.jpg" />
+    <Content Include="preApril2012\NZ03\Images\matheson.jpg" />
+    <Content Include="preApril2012\NZ03\Images\meerCats.jpg" />
+    <Content Include="preApril2012\NZ03\Images\meMyself.jpg" />
+    <Content Include="preApril2012\NZ03\Images\mist.jpg" />
+    <Content Include="preApril2012\NZ03\Images\mtCook.jpg" />
+    <Content Include="preApril2012\NZ03\Images\mtdoom2.jpg" />
+    <Content Include="preApril2012\NZ03\Images\myquarter.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\bigAl.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\canopy.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\icecream.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\joSnow.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\limeWorks.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\sheep.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\shoes.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\snowMist.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\sumner.jpg" />
+    <Content Include="preApril2012\NZ03\Images\other\tree.jpg" />
+    <Content Include="preApril2012\NZ03\Images\pacific.jpg" />
+    <Content Include="preApril2012\NZ03\Images\papanui.jpg" />
+    <Content Include="preApril2012\NZ03\Images\plane.jpg" />
+    <Content Include="preApril2012\NZ03\Images\pukaki.jpg" />
+    <Content Include="preApril2012\NZ03\Images\pukakijv.jpg" />
+    <Content Include="preApril2012\NZ03\Images\rhino.jpg" />
+    <Content Include="preApril2012\NZ03\Images\satAfternoon.jpg" />
+    <Content Include="preApril2012\NZ03\Images\satEarlyLunch.jpg" />
+    <Content Include="preApril2012\NZ03\Images\seal.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Singleton.jpg" />
+    <Content Include="preApril2012\NZ03\Images\snake.jpg" />
+    <Content Include="preApril2012\NZ03\Images\square.jpg" />
+    <Content Include="preApril2012\NZ03\Images\steam.jpg" />
+    <Content Include="preApril2012\NZ03\Images\stMarysRain.jpg" />
+    <Content Include="preApril2012\NZ03\Images\sunBBQ.jpg" />
+    <Content Include="preApril2012\NZ03\Images\sundayMorn.jpg" />
+    <Content Include="preApril2012\NZ03\Images\sunset1.jpg" />
+    <Content Include="preApril2012\NZ03\Images\tekapocross.jpg" />
+    <Content Include="preApril2012\NZ03\Images\terra.jpg" />
+    <Content Include="preApril2012\NZ03\Images\train.jpg" />
+    <Content Include="preApril2012\NZ03\Images\train428.jpg" />
+    <Content Include="preApril2012\NZ03\Images\trainCarBridge.jpg" />
+    <Content Include="preApril2012\NZ03\Images\trambridge.jpg" />
+    <Content Include="preApril2012\NZ03\Images\trimbleball.jpg" />
+    <Content Include="preApril2012\NZ03\Images\tuhoe.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\A428.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\bed.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\driveAlong.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\flyPast.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\frogRock.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\seaSunset.jpg" />
+    <Content Include="preApril2012\NZ03\Images\Weka\station.jpg" />
+    <Content Include="preApril2012\NZ03\Images\weltram.jpg" />
+    <Content Include="preApril2012\NZ03\index %282%29.htm" />
+    <Content Include="preApril2012\NZ03\mtcook.htm" />
+    <Content Include="preApril2012\NZ03\nz_general.htm" />
+    <Content Include="preApril2012\NZ03\nz_index.htm" />
+    <Content Include="preApril2012\NZ03\nz_work.htm" />
+    <Content Include="preApril2012\NZ03\other.htm" />
+    <Content Include="preApril2012\NZ03\subMenu.js" />
+    <Content Include="preApril2012\NZ03\sydney.htm" />
+    <Content Include="preApril2012\NZ03\sydney_ch.htm" />
+    <Content Include="preApril2012\NZ03\travel.htm" />
+    <Content Include="preApril2012\NZ03\wekaPass.htm" />
+    <Content Include="preApril2012\NZ03\west.htm" />
+    <Content Include="preApril2012\NZ03\wildlife.htm" />
+    <Content Include="preApril2012\ou.htm" />
+    <Content Include="preApril2012\photos.htm" />
+    <Content Include="preApril2012\Scripts\common.js" />
+    <Content Include="preApril2012\Styles\JoFeb11.css" />
+    <Content Include="preApril2012\work.htm" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Styles\JoFeb11.css" />
+    <Content Include="udacity.htm" />
+    <Content Include="Web.config" />
+    <Content Include="work.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50826</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50826/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.0.12.0-build17386\tools\net40\Microsoft.ApplicationInsights.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.0.12.0-build17386\tools\net40\Microsoft.ApplicationInsights.targets')" />
+  <Target Name="EnsureApplicationInsightsImported" BeforeTargets="BeforeBuild" Condition="'$(ApplicationInsightsImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.0.12.0-build17386\tools\net40\Microsoft.ApplicationInsights.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." />
+    <Error Condition="Exists('..\packages\Microsoft.ApplicationInsights.0.12.0-build17386\tools\net40\Microsoft.ApplicationInsights.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.0.12.0-build02810\build\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.0.12.0-build02810\build\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Chaos</title>
+<style>
+html, body {
+	padding: 0px;
+	margin: 0px;
+}
+canvas {
+	background-color: #000;
+	margin: 0px;
+	padding: 0px;
+}
+#info {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	color: #FFF;
+}
+</style>
+</head>
+<body>
+	<canvas id="cv">Your browser does not support anything useful.</canvas>
+	<div id="info"></div>
+	<script type="text/javascript" src="Utils.js"></script>
+	<script type="text/javascript" src="Lorenz.js"></script>
+	<script type="text/javascript">
+		window.onload = (function() {
+			Lorenz.animate();
+		});
+	</script>
+</body>
+</html>
+

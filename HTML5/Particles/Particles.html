@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML5 Particles</title>
+
+<style>
+html, body {
+	padding: 0px;
+	margin: 0px;
+}
+canvas {
+/*	background-color: #000;*/
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+<body>
+	<canvas id="canvas">Your browser does not support anything useful.</canvas>
+	<script type="text/javascript" src="Utils.js"></script>
+	<script type="text/javascript" src="Particles.js"></script>
+	<script type="text/javascript">
+		window.onload = (function() {
+			Particles.animate();
+		});
+	</script>
+</body>
+</html>

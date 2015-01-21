@@ -1,0 +1,120 @@
+/*
+This file is the 'style sheet' (cascading style sheet = css) comments are between / * and * / (no spaces)
+
+Tags in the HTML (eg <p>) can have classes to define how they look (eg <p class="mainText">).
+Classes are defined on this page as eg, .mainText { style; } [I will try to dig up some details on 
+the styles available].
+
+Alternative to classes, are assigning the tag a style (eg <body>), this is the same, but is across ALL identical 
+tags. Defining in this page does not require the '.'
+
+Just to complicate things, a specific tag can also have a class (eg, BODY.toc). The body tag must therefore
+have class="toc", but any other tag with this class will not be affected.
+
+The anchor tag has 3 alternate definitions - A:hover, A:link and A:visited, each of these can be defined seperately...
+
+*/
+
+BODY
+{
+	background-image: url("images/bg.jpg");
+	background-attachment: fixed;
+	background-color: #ffffcc;
+	font-size: 10pt;
+	color: #300;
+	font-family: Century Gothic;
+}
+BODY.toc 
+{
+	background-image: url("images/bgTOC.jpg");
+	background-repeat: repeat;
+	/*lang="EN-GB" link="#993300"*/
+	background-color: #3366ff;
+	font-size: 11pt;
+}
+
+UL 
+{
+	list-style-type: disk;
+	padding-top: 0pt;
+}
+
+IMG 
+{
+	border: solid 1px #000;
+}
+
+a:link IMG.link, a:visited IMG.link
+{
+	border: solid 1px #000;/*double 3px #c00;*/
+}
+a:hover IMG.link
+{
+	border: solid 1px #cc0;
+	cursor: default;
+	/*filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0,Mirror=1,Invert=0,XRay=1,Grayscale=0,Opacity=1.00);*/
+	/*filter: progid:DXImageTransform.Microsoft.dropShadow( Color=aaaaaa,offX=5,offY=5,positive=true);*/
+	/*filter: progid:DXImageTransform.Microsoft.Wave(freq=5, lightstrength=10, phase=10, strength=5);*/
+	/*filter: progid:DXImageTransform.Microsoft.Emboss();*/
+}
+
+
+.mainText 
+{
+	font-size: 11pt;
+}
+.centreText 
+{
+	font-size: 11pt;
+	text-align: center;
+}
+
+.title 
+{
+	font-size: 24pt;
+	font-family: Georgia;
+	text-align: center;
+	font-style: italic;
+}
+
+.subTitle 
+{
+	font-size: 13pt;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.linkToc 
+{
+	color: #ff0000;
+}
+
+
+/* styles for the anchor tags (links) */
+A:link 
+{
+	color: #993300;
+	text-decoration: underline;
+}
+a:visited
+{
+	color: #0000ff;
+	text-decoration:underline;
+}
+a:hover 
+{
+	text-decoration: none;
+}
+
+a.toc:link 
+{
+	color: #ff0000;
+}
+a.toc:visited 
+{
+	color: #0000ff;
+	text-decoration:underline;
+}
+a.toc:hover 
+{
+	text-decoration: none;
+}

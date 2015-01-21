@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML5 Experiments</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<canvas id="canvas">Your browser does not support anything useful.</canvas>
+	<div id="nav">
+		<p>
+			<a href="#cobwebs" onclick="javascript:selectBg('cobwebs');">Cobwebs</a>
+			<a href="#curves" onclick="javascript:selectBg('curves');">Curves</a>
+			<a href="#stripes" onclick="javascript:selectBg('stripes');" title="might make you blind">Stripes</a>
+		</p>
+	</div>
+	<div id="content">
+		<h1>My squiggly lines.  By Me &copy;2014.</h1>
+		<div id="background">
+			<p>
+				I am a developer mainly for web applications, but also analyse business requirements, and write functional specifications. I have eight years experience - four in an airline, three in an insurance company and one for a student travel group. I started writing web applications with Classic ASP, then moved to ASP.NET. My experience includes multi-tier applications, with business objects, data access layers, the front end and web services; I also have responsibility for database design and test data.
+			</p><p>
+				I have worked independently for complete development life-cycles - from gathering requirements, through development, to test, integration and user support. More recently, I have been a member of a team working on all tiers of a large .NET web project; also included gathering requirements for a functional specification
+			</p><p>
+				My most recent experience uses VB.net, but my background is C#. The main technologies used at work are:
+				.NET (VB and C# using Visual Studio)
+				MSSQL/T-SQL
+				AJAX
+				LINQ
+				HTML/CSS/XHTML
+				Javascript
+				jQuery
+				XML/XSL (FOP) for dynamic PDF generation
+				I have used LINQ, generics, written AJAX components, a Java web service, JSON and write documentation. I have also been involved in UAT phases and making design/development changes accordingly.
+				These have been often supported by third party tools, including:
+				Telerik (OpenAccess)
+				CodeSmith
+				AjaxControlToolkit
+				I am also studying courses in Java, Python and database development; and am developing an Android application (Android development) for bellringing.
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="Experiments.js"></script>
+	<script type="text/javascript">
+		window.onload = (function() {
+			init();
+		});
+		window.onresize = (function() {
+			init();
+		});
+
+		function init() {
+			canvas = document.getElementById("canvas");
+			context = canvas.getContext("2d");
+
+			width = window.innerWidth;
+			height = window.innerHeight;
+			canvas.width = width;
+			canvas.height = height;
+			
+			if (location.hash != "")
+				selectBg(location.hash.replace("#", "").split("/")[0]);
+			else
+				selectBg('curves');
+		}
+		
+		function selectBg(type) {
+			clearInterval(interval);
+			context.fillStyle = "rgba(0, 0, 0, 1)";
+			context.fillRect(0, 0, width, height);
+
+			//if (location.hash != "") {
+//			var hash = location.hash.replace("#", "").split("/");
+//			switch (hash[0]) {
+			switch (type) {
+				case "curves":
+					Curves();
+					break;
+				case "cobwebs":
+					Cobwebs();
+					break;
+				case "stripes":
+					ColourStripes();
+					break;	
+				default:
+					Curves();
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

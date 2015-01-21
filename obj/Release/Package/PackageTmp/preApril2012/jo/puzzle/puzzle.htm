@@ -1,0 +1,458 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+<!--
+
+    #elPuzzle {
+        position: absolute;
+        left:0; top:0;
+        width: 100;
+        border: 3px black solid;
+        visibility: hidden;
+    }
+
+    #elControls {
+        position: relative;
+        background-color: #EEEEEE;
+        text-align: center;
+        border-top: 1px red solid;
+        padding: 5px;
+        height: 40;
+    }
+
+    #elGrid {
+        position: absolute;
+        left: 0; top: 0;
+        visibility: hidden;
+    }
+
+    .clPuzzPiece {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .clFormLabels {
+        font: bold 8pt sans-serif;
+    }
+
+-->
+
+		</style>
+		<script language="javascript" type="text/javascript">
+puzzLeft = puzzTop = null;
+puzzWidth = puzzHeight = null;
+bordWidth = 3;
+
+puzzAcross = puzzDown = 8;
+
+isPuzzDraggable = true;
+isGrid = false;
+
+isNewPuzz = null;
+isCreated = null;
+
+piecesCreated = 0;
+pieceCount = 1;
+topCount = 0;
+
+isBroken = false;
+
+solvedCount = 1;
+pieceToSolve = null;
+
+flashTotal = 5;
+flashCount = 0;
+
+loadTotal = 3;
+loadCount = 0;
+
+tempEl = null;
+sp = " ";
+
+function whenLoaded() {
+    loadCount++;
+    if (loadCount < loadTotal) { return };
+    if (isPuzzDraggable) {
+        elPuzzle.draggable = true;
+        elPuzzle.style.cursor = "move";
+    }
+    else {
+        elPuzzle.draggable = false;    
+        dragBut.value = "Drag OFF";
+    }
+    
+    elPuzzle.clipLeft = elPuzzle.clipTop = 0;
+    initPuzz();
+}
+
+function initPuzz() {
+    if (isBroken) {allDone(false)};
+    puzzWidth = document.images["imOrig"].width;
+    puzzHeight =  document.images["imOrig"].height;
+    elPuzzle.style.width = elControls.style.width = puzzWidth;
+    elPuzzle.style.visibility = "visible";
+    isNewPuzz = true;
+    isCreated = false;
+    pieceToSolve = 1;
+}
+
+function createPieces(){
+    puzzPieces = puzzAcross * puzzDown;
+    if (puzzPieces > piecesCreated) {
+        makeStart = piecesCreated + 1;
+        for(i=makeStart; i<=puzzPieces; i++) {
+            window.status = "Creating puzzle piece... " + i;
+                    
+            divStr = "<DIV ID=PIECE" + i + " CLASS=clPuzzPiece>"
+                   + "<IMG NAME=imPiece" + i + " ></DIV>";
+
+            document.body.insertAdjacentHTML("BeforeEnd",divStr);
+            tempEl = eval("PIECE" + i);
+            tempEl.draggable = true;            
+        }
+    piecesCreated = puzzPieces;
+    }
+    activeEl = eval("PIECE" + puzzPieces);
+}
+
+function createPuzzle() {
+    if (!isCreated) { createPieces() };
+    pieceWidth = puzzWidth/puzzAcross;
+    pieceHeight = puzzHeight/puzzDown; 
+
+    while (pieceCount <= puzzPieces) {
+
+        pixT = topCount * pieceHeight;
+        pixB = (topCount + 1) * pieceHeight;
+
+        for (i=1; i<=puzzAcross; i++) {
+            window.status = "Clipping image for piece... " + pieceCount;
+
+            tempEl = eval("PIECE" + pieceCount);
+
+            document.images["imPiece" + pieceCount].src = document.images["imOrig"].src; 
+            tempEl.style.pixelLeft = puzzLeft;
+            tempEl.style.pixelTop = puzzTop;
+
+            pixR = pieceWidth * i;
+            pixL = pieceWidth * (i-1);        
+            tempEl.style.clip = "rect(" + pixT + sp + pixR + sp + pixB + sp + pixL + ")";
+            tempEl.clipLeft = pixL;
+            tempEl.clipTop = pixT;
+            pieceCount++
+        }
+        topCount++
+    }
+    if (isGrid) {setGrid()};    
+    isNewPuzz = false;
+    isCreated = true;
+    pieceCount = 1;
+    topCount = 0;
+    window.status = "";
+}
+
+function breakUp() {
+    puzzLeft = elPuzzle.style.pixelLeft + bordWidth; 
+    puzzTop = elPuzzle.style.pixelTop + bordWidth;
+    pieceToSolve = 1;
+
+    if (isNewPuzz && isBroken) { allDone(false) };
+    if (isNewPuzz) { createPuzzle() };
+
+    if (isPuzzDraggable) {
+        elPuzzle.draggable = false; 
+        elPuzzle.style.cursor = "default";
+    }
+    elImOrig.style.visibility = "hidden";
+
+    startL = document.body.scrollLeft;
+    startT = document.body.scrollTop;
+    endL = (startL + document.body.offsetWidth) - puzzWidth;
+    endT = (startT + document.body.offsetHeight) - puzzHeight;
+
+    for (i=1; i<=puzzPieces; i++) {
+        putL = getRandNums(startL,endL);
+        putT = getRandNums(startT,endT);
+
+        tempEl = eval("PIECE" + i);
+        tempEl.draggable = true;
+        tempEl.style.pixelLeft = putL;
+        tempEl.style.pixelTop = putT;
+        tempEl.style.cursor = "move";
+        tempEl.style.visibility = "visible";
+    }
+
+    if (isGrid) {elGrid.style.visibility = "visible"};
+
+    isBroken = true;
+    solvedCount = 1;
+}
+
+function getRandNums(from,to){
+    temp = parseInt((Math.random() * (to-from)) + (from));
+    while (isNaN(temp)) {
+        temp = parseInt((Math.random() * (to - from)) + (from))
+    }
+    return temp
+}
+
+function setGrid() {
+    elImGrid.style.width = (9/puzzAcross) * puzzWidth;
+    elImGrid.style.height = (9/puzzDown) * puzzHeight;
+    elGrid.style.clip = "rect(0 " + puzzWidth + " " + puzzHeight + " 0)";
+    gridBut.value = "Grid ON";
+    if (isBroken) {elGrid.style.visibility = "visible"}
+}
+
+function visToggle(isFullSolve){
+    if (flashCount != flashTotal) { 
+        tempEl.style.visibility = (tempEl.style.visibility=='visible') ? 'hidden' : 'visible';
+        flashCount++;
+    }
+    else {
+        clearInterval(flashTimer); 
+        flashCount = 0;
+        tempEl.style.visibility = "visible"; 
+        if (tempEl != elImOrig) { origPos(tempEl) };
+        if (isFullSolve) { pieceToSolve++; solve(true) }
+    }
+}
+
+function solve(isFullSolve) {
+    if (!isBroken) { return };
+    if (pieceToSolve > puzzPieces) { pieceToSolve = 1; return }
+    tempEl = eval("PIECE" + pieceToSolve);
+    if (tempEl.draggable){
+        if (tempEl != activeEl ) {
+            tempEl.style.zIndex = activeEl.style.zIndex + 1;
+            activeEl = tempEl;
+        }
+
+        flashTimer = setInterval("visToggle(" + isFullSolve + ")",100);
+
+    }
+    else { pieceToSolve++; solve(isFullSolve) };
+
+}
+
+function origPos(tempEl) {
+    tempEl.style.pixelLeft = puzzLeft;
+    tempEl.style.pixelTop = puzzTop;
+    tempEl.draggable = false;
+    tempEl.style.cursor = 'default';
+    solvedCount++;
+    if (solvedCount > puzzPieces) {
+        allDone(true);
+    }
+}
+
+function allDone(solved){
+    for (i=1; i<=puzzPieces; i++) {
+        tempEl = eval("PIECE" + i);
+        tempEl.style.visibility = "hidden";
+    }
+    elImOrig.style.visibility = "visible";
+    if (isGrid) { elGrid.style.visibility = "hidden" };
+    if (isPuzzDraggable) {
+        elPuzzle.draggable = true;
+        elPuzzle.style.cursor = "move";
+    }
+
+    solvedCount = 1;
+    if (solved) {
+        isBroken = false;
+        tempEl = elImOrig;
+        flashTimer = setInterval("visToggle(false)",100);
+    }
+}
+
+function giveHint() {
+    if (isBroken) { solve(false) };
+}
+
+function gridToggle(){
+    if (isGrid) {
+        elGrid.style.visibility = "hidden";
+        elImGrid.style.width = 1;
+        elImGrid.style.height = 1;
+        gridBut.value = "Grid OFF";
+    }
+    else { setGrid() };
+    isGrid = !isGrid;
+}
+
+function dragToggle(){
+    isPuzzDraggable = !isPuzzDraggable;
+    if (!isBroken) { elPuzzle.draggable = !elPuzzle.draggable };
+    if (isPuzzDraggable) {
+        elPuzzle.style.cursor = "move";
+        dragBut.value = "Drag ON";
+    }
+    else {
+        elPuzzle.style.cursor = "default";
+        dragBut.value = "Drag OFF";
+    }
+}
+
+
+
+
+
+currentX = currentY = 0;
+whichEl = null;
+
+function grabEl() {
+    whichEl = event.srcElement;
+    while (!whichEl.draggable) { 
+        whichEl = whichEl.parentElement;
+        if (whichEl == null) { return }
+    }
+
+    if ( whichEl != elPuzzle && whichEl != activeEl) {
+        whichEl.style.zIndex = activeEl.style.zIndex + 1;
+        activeEl = whichEl;
+    }
+
+    whichEl.style.pixelLeft = whichEl.offsetLeft;
+    whichEl.style.pixelTop = whichEl.offsetTop;
+
+    currentX = (event.clientX + document.body.scrollLeft);
+    currentY = (event.clientY + document.body.scrollTop); 
+}
+    
+function moveEl() {
+    if (whichEl == null) { return };
+
+    newX = (event.clientX + document.body.scrollLeft);
+    newY = (event.clientY + document.body.scrollTop);
+
+    distanceX = (newX - currentX);
+    distanceY = (newY - currentY);
+    currentX = newX;
+    currentY = newY;
+    
+    whichEl.style.pixelLeft += distanceX;
+    whichEl.style.pixelTop += distanceY;
+    if (whichEl.style.pixelLeft + whichEl.clipLeft < document.body.scrollLeft) {
+        whichEl.style.pixelLeft = document.body.scrollLeft - whichEl.clipLeft;
+    }
+    if (whichEl.style.pixelTop + whichEl.clipTop < document.body.scrollTop) {
+        whichEl.style.pixelTop = document.body.scrollTop - whichEl.clipTop;
+    }
+    event.returnValue = false;
+}
+    
+function checkEl() {
+    if (whichEl != null) { return false }
+}
+
+
+function dropEl() {
+    if (whichEl == null){return}
+    if (whichEl == elPuzzle) {whichEl = null; return}
+
+    dropLeft = event.clientX + document.body.scrollLeft;
+    dropTop = event.clientY + document.body.scrollTop;
+    allowLeft = puzzLeft;
+    allowRight = puzzLeft + puzzWidth;
+    allowTop = puzzTop;
+    allowBot = puzzTop + puzzHeight;
+
+    if (dropLeft >= allowLeft && dropLeft <= allowRight && 
+        dropTop >= allowTop && dropTop <= allowBot) {
+
+        diffLeft = puzzLeft - whichEl.style.pixelLeft;
+        diffTop = puzzTop - whichEl.style.pixelTop;
+
+        whereL = parseInt( diffLeft / pieceWidth ) * pieceWidth;
+        whereT = parseInt( diffTop / pieceHeight ) * pieceHeight;
+
+        modL = diffLeft % pieceWidth;
+        modT = parseInt( diffTop % pieceHeight );
+
+        if (Math.abs(modL) > pieceWidth/2) {
+            if (modL>0) {whereL += pieceWidth} else {whereL -= pieceWidth}
+        }
+        if (Math.abs(modT) > pieceHeight/2) {
+            if (modT>0) {whereT += pieceHeight} else {whereT -= pieceHeight}
+        }
+
+        whichEl.style.pixelLeft = puzzLeft - whereL;
+        whichEl.style.pixelTop = puzzTop - whereT;
+
+        if (whichEl.style.pixelLeft == puzzLeft && whichEl.style.pixelTop == puzzTop) {
+            tempEl = whichEl;
+            flashTimer = setInterval("visToggle(false)",100); 
+        }
+
+
+    }
+    whichEl = null;
+}
+
+document.onmousemove = moveEl;
+document.onselectstart = checkEl;
+document.onmousedown = grabEl;
+document.onmouseup = dropEl;
+
+		</script>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+	</head>
+	<body onload="whenLoaded();breakUp();">
+		<DIV ID="elPuzzle">
+			<IMG NAME="imOrig" ID="elImOrig" SRC="IMG_3882.jpg" onLoad="whenLoaded()">
+			<DIV ID="elGrid">
+				<IMG NAME="imGrid" ID="elImGrid" SRC="grid.gif" onLoad="whenLoaded()">
+			</DIV>
+			<DIV ID="elControls">
+				<INPUT ID="solvBut" TYPE="BUTTON" onClick="solve(true)" STYLE="cursor:hand" VALUE="Solve" NAME="solvBut">
+				<INPUT ID="hintBut" TYPE="BUTTON" onClick="giveHint()" STYLE="cursor:hand" VALUE="Hint" NAME="hintBut">
+				<INPUT ID="brkBut" TYPE="BUTTON" onClick="breakUp()" STYLE="cursor:hand" VALUE="Break" NAME="brkBut">
+				<BR>
+				<INPUT ID="gridBut" TYPE="BUTTON" onClick="gridToggle()" STYLE="cursor:hand; font:5pt; position:relative; top:5" VALUE="Grid OFF" NAME="gridBut">
+				<INPUT ID="dragBut" TYPE="BUTTON" onClick="dragToggle()" STYLE="cursor:hand; font:5pt; position:relative; top:5"  VALUE="Drag ON" NAME="dragBut">
+				<BR>
+				<BR>
+				<NOBR>
+				<B CLASS="clFormLabels">Across:</B>
+				<SELECT ID="selAcross" onChange="puzzAcross = options[selectedIndex].value;isNewPuzz=true;isCreated=false;" NAME="selAcross">
+					<OPTION VALUE="2">2</option>
+					<OPTION VALUE="3">3</option>
+					<OPTION VALUE="4">4</option>
+					<OPTION VALUE="5" SELECTED>5</option>
+					<OPTION VALUE="6">6</option>
+					<OPTION VALUE="7">7</option>
+					<OPTION VALUE="8">8</option>
+					<OPTION VALUE="9">9</option>
+				</SELECT>
+				</NOBR>
+				<NOBR>
+					<B CLASS="clFormLabels">Down:</B>
+					<SELECT ID="selDown" onChange="puzzDown=options[selectedIndex].value;isNewPuzz=true;isCreated=false;" NAME="selDown">
+						<OPTION VALUE="2">2</option>
+						<OPTION VALUE="3">3</option>
+						<OPTION VALUE="4">4</option>
+						<OPTION VALUE="5" SELECTED>5</option>
+						<OPTION VALUE="6">6</option>
+						<OPTION VALUE="7">7</option>
+						<OPTION VALUE="8">8</option>
+						<OPTION VALUE="9">9</option>
+					</SELECT>
+				</NOBR>
+				<NOBR>
+					<B CLASS="clFormLabels">Puzzle:</B>
+					<SELECT ID="selPic" onChange='document.images["imOrig"].src = options[selectedIndex].value;initPuzz();' NAME="selPic">
+						<OPTION VALUE="IMG_3882.jpg">S15</option>
+						<OPTION VALUE="IMG_3869.jpg">U-boat</option>
+						<OPTION VALUE="IMG_3676.jpg">FrankenChurch</option>
+						<OPTION VALUE="107-0754_IMG.jpg">Me :o)</option>
+						<OPTION VALUE="IMG_3774.jpg">Mmmm 9F...</option>
+					</SELECT>
+				</NOBR>
+			</DIV>
+		</DIV>
+	</body>
+</html>

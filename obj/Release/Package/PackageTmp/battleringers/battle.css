@@ -1,0 +1,100 @@
+body{
+  background : #333366;
+  margin : 10px 80px;
+}
+A{
+  text-decoration : none;
+}
+A:hover{
+  text-decoration : none;
+}
+blockquote{
+  text-indent : 40px;
+  line-height : 1px;
+}
+.bodytitle{
+  font : 28px Village Square;
+  color : #FFCC33;
+  text-align : center;
+}
+.bodyh2{
+  font: 24px Village Square;
+  color : #669999;
+}
+.bodyh3{
+  font: 18px cursive;
+  color : #FFCC33;
+}
+.introtext{
+  font : bold 15px Bookman Old Style;
+  color : #FFFFFF;
+  text-align : center;
+}
+.introtext:first-letter{
+  font : bold 35px Bookman Old Style;
+  color : #FFCC33;
+  text-align : center;
+}
+.toplink{
+  color: #FFFFFF;
+  font : 12px Haettenschweiler;
+  text-decoration : underline;
+}
+A.toplink:hover{
+  text-decoration : none;
+}
+.navlink{
+  font : 13px Optimum;
+  color: #FFFFFF;
+}
+A.navlink:hover{
+	text-decoration : underline;
+}
+.text{
+  font : 14px Optimum;
+  text-align : justify;
+  color : #FFFFFF;
+}
+.texthead{
+  font-weight : bold;
+}
+.textlink{
+  text-decoration : underline;
+  color : #FFFFFF;
+}
+.desctextlink{
+  text-decoration : underline;
+  color : #CCCC99;
+}
+.ttext{
+  font : 12px MathSoftText;
+  color : #FFFFFF;
+  text-align : center;
+}
+.ttitle{
+  font : bold 12px MathSoftText;
+  color : #FFFFFF;
+  text-align : center;
+}
+.pealtext{
+  font : 17px MathSoftText;
+  color : #FFFFFF;
+  text-align : center;
+}
+.desctext{
+  font : 14px Optimum;
+  text-align : justify;
+  color : #FFFF00;
+}
+ .spot{
+  font : 1pt serif;
+}
+LI{
+  list-style-type : circle;
+  color : #FFFFFF;
+}
+.copytext{
+  font : 10px Optimum;
+  text-align : right;
+  color : #FFFFFF;
+}

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jofaircloth.co.uk (android development)</title>
+    <link href="Styles/JoFeb11.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="Scripts/common.js"></script>
+</head>
+<body id="android">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <img src="Images/jofaircloth.png" alt="Jo Faircloth BEng(hons) DIS CertWAD(open) CertAPS(open) MIET" />
+            </div>
+            <div class="subTitle">
+                <span id="lblClock"></span>
+            </div>
+            <div class="clear menu">
+                <div>
+                    <script type="text/javascript">                        ShowMainMenu();</script>
+                    <noscript>The main and sub menus are driven by JavaScript, please enable it to ensure good navigation throughout this site.</noscript>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="subMenu">
+                <ul>
+                    <li><a href="https://play.google.com/store/apps/details?id=uk.co.jofaircloth.ringsimForAndroid&feature=search_result#?t=W251bGwsMSwxLDEsInVrLmNvLmpvZmFpcmNsb3RoLnJpbmdzaW1Gb3JBbmRyb2lkIl0." target="_blank">Ringsim for Android on Google Play</a></li>
+                </ul>
+            </div>
+            <a name="ringing"></a>
+            <h2>Ringsim for Android</h2>
+            <div class="contentBox">
+                <p>
+                    Ringsim for Android is an application, available on the Android Market (now known as Google Play), for Android phones using Android 2.3 and above.
+                </p>
+                <p>
+                    It is in the market purely to share with a couple of friends, who may be able to help with suggestions and bugs.
+                </p>
+                <p>
+                    What it does do, is successfully searches the microSIRIL library (MSLib) of files (found at <a href="http://www.ringsoft.co.uk/change-ringers/ringing-programs/microsiril/method-libraries/" target="_blank">http://www.ringsoft.co.uk/change-ringers/ringing-programs/microsiril/method-libraries/</a>), and display the blueline, allowing a few options (like show/don't show the row numbers, and select a trace bell).  <b>Bobs</b> and <b>singles</b> are also shown, but I know a few lead-head groups can cause problems.  There are approximately 17,680 methods available (see my little Python script below!!).
+                </p>
+                <p>
+                    Just for a general gist, here are the screen-shots (note that this is a sub-set of results, due to tedium of emulator!):
+                </p>
+                <p>
+                    <span>
+                        <a href="Images/Ringsim_list.png" target="_blank" style="width:220px">
+                            <img src="Images/Ringsim_list.png" width="160" height="267" />
+                            <br />
+                            A list of results, selected from method stage and class.  The star shows it as a favourite.
+                        </a>
+                    </span>
+                    <span>
+                        <a href="Images/Ringsim_search_results.png" target="_blank" style="width:220px">
+                            <img src="Images/Ringsim_search_results.png" width="160" height="267" />
+                            <br />
+                            A list of search results, searching for all instances of 'bob'.<br /><br />
+                        </a>
+                    </span>
+                    <span>
+                        <a href="Images/Ringsim_blue_line.png" target="_blank" style="width:220px">
+                            <img src="Images/Ringsim_blue_line.png" width="160" height="267" />
+                            <br />
+                            A blue line, tracing treble and 3rd for Ageratum Surprise Major (group b), and showing bob and single.
+                        </a>
+                    </span>
+                </p>
+                <p><br /><br /><hr /><br /></p>
+                <p>
+                    Python code to count number of methods in MSLib files, count_mslib_methods.py:
+                    <pre>
+        import os
+
+        def method_counter():
+            path = '...\\MSLIB\\'
+            files = os.listdir(path)
+            counter = 0
+            for file in files:
+                f = open(path + file, 'r')
+                for line in f:
+                    counter = counter + 1
+            return counter
+
+        print method_counter()
+                    </pre>
+                </p>
+            </div>
+            <a name="trains"></a>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="footer">
+                        <script type="text/javascript">                Footer();</script>        
+        </div>
+    </div>
+</body>
+</html>

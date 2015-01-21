@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>2048</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+	<div class="score-container"></div>
+	<div class="game-container">
+		<div class="game-end-container">
+			<p></p>
+			<a href="#">Test A</a>
+		</div>
+		<div class="grid-container">
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+		</div>
+		<div class="tile-container"></div>
+	</div>
+</div>
+<script src="js/KeyboardInput.js"></script>
+<script src="js/GamePlay.js"></script>
+<script src="js/GameDisplay.js"></script>
+<script src="js/Grid.js"></script>
+<script src="js/Tile.js"></script>
+<script type="text/javascript">
+	window.onload = (function() {
+		new GamePlay(4, new KeyboardInput, new GameDisplay);
+	});
+</script>
+
+</body>
+</html>

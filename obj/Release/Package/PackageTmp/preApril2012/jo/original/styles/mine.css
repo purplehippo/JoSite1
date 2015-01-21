@@ -1,0 +1,104 @@
+BODY
+{
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 10px;
+}
+
+#container 
+{
+	width: 780px;
+	border: solid 1px #DDD;
+	margin: 0px;
+	padding: 0px;
+	background-color: #F0F0F0;
+}
+
+#header 
+{
+	height: 40px;
+	background-color: #800000;
+	margin: 0px;
+	color: #803;
+}
+
+#menuBar 
+{
+	height: 20px;
+	background-color: #888;
+	margin: 0px;
+	margin-bottom: 1px;
+}
+
+#mainImage 
+{
+	width: 512px;
+	height: 190px;
+	float: left;
+}
+
+#title 
+{
+	position: absolute;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 40px;
+	padding-top: 5px;
+	padding-left: 10px;
+	font-family: "Arial Black";
+}
+
+#rightPanel 
+{
+	float: right;
+	background-color: #DDD;
+	color: #C00;
+	width: 265px;
+	margin: 0px;
+	height: 300px;
+}
+
+.rightTitle 
+{
+	font-weight: bold;
+	text-align: left;
+}
+.rightText 
+{
+	text-align: left;
+	color: #666;
+}
+
+#leftPanel 
+{
+	text-align: left;
+	padding: 5px;
+	padding-top: 12px;
+	float: left;
+}
+
+#footer 
+{
+}
+
+.text
+{
+}
+
+
+
+DIV#RightMenu A 
+{
+	color: #FFF;
+	text-align: left;
+	display: block;
+	width: 265px;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+DIV#RightMenu A:hover 
+{
+	background-color: #123456;
+}

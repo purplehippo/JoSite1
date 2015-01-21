@@ -1,0 +1,172 @@
+@CHARSET "ISO-8859-1";
+html, body {
+	margin: 0px;
+	padding: 0px;
+	background: #eee;
+	color: #666;
+	font-family: "Calibri";
+	font-size: 18px;
+}
+body {
+	margin: 50px 10px 10px 50px;
+}
+.container {
+	width: 550px;
+}
+.score-container {
+	position: relative;
+	display: inline-block;
+	line-height: 30px;
+	height: 30px;
+	float: right;
+	font-size: 25px;
+	font-weight: bold;
+}
+.game-container {
+	position: relative;
+	padding: 10px;
+	background: #808080;
+	width: 430px;
+	height: 430px;
+	border-radius: 6px;
+}
+.grid-container {
+	position: absolute;
+	background: #808080;
+	z-index: 10;
+}
+
+.grid-row {
+	margin-bottom: 10px;
+}
+.grid-row:last-child {
+	margin-bottom: 0px;
+}
+/* this allows the row to have content, even when it doesn't */
+.grid-row:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.grid-cell {
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	border-radius:  3px;
+	background: rgba(255, 255, 255, 0.3);
+	float: left;``
+}
+.grid-cell:last-child {
+	margin-right: 0px;
+}
+.tile-container {
+	position: absolute; /* absolute within game-container */
+	z-index: 100;
+}
+.tile {
+	width: 100px;
+	height: 100px;
+	line-height: 110px;
+	border-radius: 3px;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	color: #FFF;
+}
+/* tile positions */
+.tile-top-0 {
+	top: 0px;
+}
+.tile-top-1 {
+	top: 110px;
+}
+.tile-top-2 {
+	top: 220px;
+}
+.tile-top-3 {
+	top: 330px;
+}
+.tile-left-0 {
+	left: 0px;	
+}
+.tile-left-1 {
+	left: 110px;	
+}
+.tile-left-2 {
+	left: 220px;	
+}
+.tile-left-3 {
+	left: 330px;	
+}
+
+
+
+/* tile number colours */
+.tile-2 {
+	background-color: #FF7373;
+}
+.tile-4 {
+	background-color: #FF4040;
+}
+.tile-8 {
+	background-color: #A60000;
+}
+.tile-16 {
+	background-color: #FFB273;
+}
+.tile-32 {
+	background-color: #FF9640;
+}
+.tile-64 {
+	background-color: #A64B00;
+}
+.tile-128 {
+	background-color: #5CCCCC;
+}
+.tile-256 {
+	background-color: #33CCCC;
+}
+.tile-512 {
+	background-color: #006363;
+}
+.tile-1024 {
+	background-color: #39E639;
+}
+.tile-2048 {
+	background-color: #008500;
+}
+
+
+.game-end-container {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: rgba(200, 200, 200, 0.75);
+	z-index: 10000;
+	text-align: center;
+}
+.game-end-container p {
+	font-size: 60px;
+	font-weight: bold;
+	color: #808080;	
+}
+.game-end-container a {
+	display: inline-block;
+	background: #FF7400;
+	color: #808080;
+	border-radius: 6px;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 0 20px;
+	text-decoration: none;
+}
+.game-over-message {
+	display: block;
+}
+.game-won-message {
+	display: block;
+}

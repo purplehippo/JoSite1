@@ -1,0 +1,233 @@
+﻿/* JoF  Feb 2011 */
+html, body, div, h1, h2, ul, li, dl, dt, dd, p, a
+{
+    padding: 0px; margin: 0px;
+}
+body 
+{
+    background-color: #000;
+    position: relative; display: block;
+    width: 960px; padding: 50px 0px; margin: 0px auto;
+    color: #666; text-align: right; font: 16px/1.5 Cambria, Georgia, sans-serif;
+}
+dt { font-weight: bold; }
+
+/* ======================================================
+ * SOLAR SYSTEM
+ * ======================================================
+ */
+#solarsystem
+{
+    position: relative;
+    width: 100%; height: 640px; /* set a height so the Sun/planets fit from the top... */
+
+}
+#solarsystem li
+{
+    display: inline-block;
+    margin: 0px;
+}
+/* for every h2 in our solarsystem, move it 1/2 way left and set a corner radius - this gives our orbit borders */
+#solarsystem h2
+{
+    position: absolute;
+    top: 50%; left: -50%;
+    text-indent: -9999px; text-align: left;
+    border: solid 1px #334466;
+    
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+           -border-radius: 50%;
+}
+/* setting a blank content 'fills' our planets, and we set up positioning, and make our planets round */
+#solarsystem h2:before
+{
+    content: "";
+    position: absolute;
+    -webkit-border-radius: 50%; 
+       -moz-border-radius: 50%;
+           -border-radius: 50%;
+}
+
+/* ======================================================
+ * SUN
+ * ======================================================
+ */
+/* all h2(:before)s already have a border - corner radius 50% - just set their size, and pop them in the right place for each planet/Sun */
+#sun h2
+{
+    z-index: 1000;
+    width: 614px; height: 614px; /* this means Pluto can be ~1px and 1px = 1133.55km (which is incredibly interesting, coz 355/113 = Pi (6dp).  Cool :o) ) */
+    border: none; 
+    margin: -307px 0px 0px 0px; /* not sure why 50% doesn't work?? */
+}
+/* as h2 is taken up with the orbit, use pseudo-element 'before' to create planet size, and randomly pop them in the right place */
+#sun h2:before
+{
+    top: 0px; left: 0px;
+    width: 614px; height: 614px;
+    border: none; background-color: #FC3;
+    -webkit-box-shadow: 0px 0px 50px #F90;
+    /*background-image: -webkit-radial-gradient(80% 20%, circle farthest-corner, #FFF, #C90);  gradient just looks too weird on different screens.. */
+
+}
+
+/* ======================================================
+ * postition the orbits and planets
+ * ======================================================
+ */
+#mercury h2
+{
+    z-index: 900;
+    width: 630px; height: 630px;
+    margin: -315px 0px 0px -10px;
+}
+#mercury h2:before
+{
+    top: 315px; right: -2px; width: 2px; height: 2px; background-color: #FFF;
+}
+
+#venus h2
+{
+    z-index: 800;
+    width: 644px; height: 644px;
+    margin: -322px 0 0 -18px;
+}
+#venus h2:before
+{
+    top: 322px; right: -3px; width: 5px; height: 5px; background-color: #FF0;
+}
+
+#earth h2
+{
+    z-index: 700;
+    width: 656px; height: 656px;
+    margin: -328px 0px 0px -24px;
+}
+#earth h2:before
+{
+    top: 328px; right: -4px; width: 6px; height: 6px; background-color: #0C6;
+}
+
+#mars h2
+{
+    z-index: 600;
+    width: 678px; height: 678px;
+    margin: -339px 0px 0px -33px;
+}
+#mars h2:before
+{
+    top: 339px; right: -2px; width: 3px; height: 3px; background-color: #C00;
+}
+
+#asteroids h2 
+{
+    z-index: 100;
+    width: 759px; height: 759px;
+    margin: -380px 0px 0px -72px;
+    -webkit-border-image: url("asteroids.png") 0 0 0 0;
+       -moz-border-image: url("asteroids.png") 0 0 0 0;
+           -border-image: url("asteroids.png") 0 0 0 0;
+/*
+    background: url(asteroids.png) no-repeat ;
+    background-position: center center;
+*/
+}
+
+#jupiter h2
+{
+    z-index: 500;
+    width: 832px; height: 832px;
+    margin: -416px 0px 0px -112px;
+}
+#jupiter h2:before
+{
+    top: 416px; right: -31px; width: 62px; height: 62px; background-color: #F00;
+}
+
+#saturn h2
+{
+    z-index: 400;
+    width: 1015px; height: 1015px;
+    margin: -507px 0px 0px -204px;
+}
+#saturn h2:before
+{
+    top: 507px; right: -26px; width: 52px; height: 52px; background-color: #FF0;
+}
+
+#uranus h2
+{
+    z-index: 300;
+    width: 1420px; height: 1420px;
+    margin: -710px 0px 0px -413px;
+}
+#uranus h2:before
+{
+    top: 710px; right: -11px; width: 22px; height: 22px; background: #888;
+}
+
+#neptune h2
+{
+    z-index: 200;
+    width: 1876px; height: 1876px;
+    margin: -938px 0px 0px -641px;
+}
+#neptune h2:before
+{
+    top: 938px; right: -11px; width: 22px; height: 22px; background: #00F;
+}
+
+#pluto h2
+{
+    z-index: 100;
+    width: 2272px; height: 2272px;
+    margin: -1135px 0px 0px -829px;
+}
+#pluto h2:before
+{
+    top: 1135px; right: -1px; width: 1px; height: 1px; background: #FFF;
+}
+
+/* ======================================================
+ * define animations - this not be working in IE it is
+ * ======================================================
+ */
+/* set all h2s within our solar system list to go round and round and round and..., and call it orbits (for transform, below) */
+#solarsystem li h2
+{
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-name: orbits;
+}
+
+/* 1s = 4d.  Set orbit duration */
+#mercury h2     { -webkit-animation-duration: 22s; }
+#venus h2       { -webkit-animation-duration: 56s; }
+#earth h2       { -webkit-animation-duration: 91s; }
+#mars h2        { -webkit-animation-duration: 172s; }
+#asteroids h2   { -webkit-animation-duration: 375s; }
+#jupiter h2     { -webkit-animation-duration: 1082s; }
+#saturn h2      { -webkit-animation-duration: 2685s; }
+#uranus h2      { -webkit-animation-duration: 7642s; }
+#neptune h2     { -webkit-animation-duration: 14937s; }
+#pluto h2       { -webkit-animation-duration: 22630s; }
+
+/* 1s = 88d */
+/*
+#mercury h2     { -webkit-animation-duration: 1s; }
+#venus h2       { -webkit-animation-duration: 2.56s; }
+#earth h2       { -webkit-animation-duration: 4.15s; }
+#mars h2        { -webkit-animation-duration: 7.80s; }
+#jupiter h2     { -webkit-animation-duration: 49.2s; }
+#saturn h2      { -webkit-animation-duration: 122.0s; }
+#uranus h2      { -webkit-animation-duration: 347.4s; }
+#neptune h2     { -webkit-animation-duration: 679.0s; }
+#pluto h2       { -webkit-animation-duration: 1028.6s; }
+*/
+
+/* rotate our orbit (h2) frames, according to the duration set above */
+@-webkit-keyframes orbits
+{
+    from { -webkit-transform:rotate(0deg) } to { -webkit-transform:rotate(360deg) }
+}
